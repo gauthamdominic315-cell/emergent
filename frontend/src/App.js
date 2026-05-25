@@ -279,4 +279,273 @@ export default function App() {
       <Footer />
     </div>
   );
+}function App() {
+  const products = [
+    "Office Stationery",
+    "Packaging Materials",
+    "Plastic Products",
+    "Disposable Products",
+    "Glass Products",
+    "Electronic & Hardware",
+    "Housekeeping Materials",
+    "Cleaning Chemicals"
+  ];
+
+  return (
+    <div style={{
+      fontFamily: "Arial, sans-serif",
+      background: "#f8f8f8",
+      color: "#0b2c6d"
+    }}>
+
+      {/* HEADER */}
+      <header style={{
+        background: "white",
+        padding: "20px 50px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        borderBottom: "1px solid #ddd",
+        position: "sticky",
+        top: 0,
+        zIndex: 1000
+      }}>
+
+        <div>
+          <h1 style={{
+            margin: 0,
+            fontSize: "32px",
+            color: "#0b2c6d"
+          }}>
+            KUMAR ENTERPRISES
+          </h1>
+
+          <p style={{
+            margin: 0,
+            letterSpacing: "4px",
+            fontSize: "12px",
+            color: "#555"
+          }}>
+            ONE STOP SOLUTION FOR YOUR OFFICE NEEDS
+          </p>
+        </div>
+
+        <nav style={{
+          display: "flex",
+          gap: "30px",
+          alignItems: "center"
+        }}>
+          <a href="#home">Home</a>
+          <a href="#products">Products</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+
+          <a
+            href="https://wa.me/919900292915"
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              background: "#e2a400",
+              color: "white",
+              padding: "12px 20px",
+              textDecoration: "none",
+              borderRadius: "6px",
+              fontWeight: "bold"
+            }}
+          >
+            WhatsApp
+          </a>
+        </nav>
+      </header>
+
+      {/* HERO SECTION */}
+      <section
+        id="home"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          minHeight: "80vh",
+          alignItems: "center",
+          padding: "50px"
+        }}
+      >
+
+        <div>
+          <p style={{
+            letterSpacing: "4px",
+            color: "#555"
+          }}>
+            CORPORATE SUPPLIER • BENGALURU • SINCE 2016
+          </p>
+
+          <h2 style={{
+            fontSize: "72px",
+            lineHeight: "1",
+            marginBottom: "20px",
+            color: "#0b2c6d"
+          }}>
+            One Stop Solution
+            <br />
+            <span style={{ color: "#dca300" }}>
+              for your office needs.
+            </span>
+          </h2>
+
+          <p style={{
+            fontSize: "22px",
+            color: "#555",
+            maxWidth: "700px"
+          }}>
+            From housekeeping consumables to safety gear,
+            office stationery to pantry essentials —
+            serving hotels, banks, pharma, IT and
+            government organisations.
+          </p>
+        </div>
+
+        <div>
+          <img
+            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200"
+            alt="warehouse"
+            style={{
+              width: "100%",
+              borderRadius: "10px"
+            }}
+          />
+        </div>
+      </section>
+
+      {/* PRODUCTS */}
+      <section
+        id="products"
+        style={{
+          padding: "80px 50px",
+          background: "white"
+        }}
+      >
+
+        <h2 style={{
+          fontSize: "48px",
+          textAlign: "center",
+          marginBottom: "50px"
+        }}>
+          Product Categories
+        </h2>
+
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+          gap: "30px"
+        }}>
+
+          {products.map((item, index) => (
+            <div
+              key={index}
+              style={{
+                background: "#0b2c6d",
+                color: "white",
+                padding: "40px 30px",
+                borderRadius: "12px",
+                textAlign: "center",
+                boxShadow: "0 5px 20px rgba(0,0,0,0.1)"
+              }}
+            >
+              <h3>{item}</h3>
+            </div>
+          ))}
+
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section
+        id="about"
+        style={{
+          padding: "80px 50px",
+          background: "#f5f5f5"
+        }}
+      >
+
+        <h2 style={{
+          fontSize: "48px",
+          marginBottom: "30px"
+        }}>
+          About Kumar Enterprises
+        </h2>
+
+        <p style={{
+          fontSize: "20px",
+          lineHeight: "1.8",
+          color: "#555",
+          maxWidth: "1000px"
+        }}>
+          Kumar Enterprises is a Bengaluru-based corporate supplier
+          offering complete office and industrial procurement solutions.
+          We specialize in office stationery, packaging materials,
+          disposables, glassware, pantry essentials,
+          safety equipment and housekeeping supplies.
+        </p>
+      </section>
+
+      {/* CONTACT */}
+      <section
+        id="contact"
+        style={{
+          padding: "80px 50px",
+          background: "#0b2c6d",
+          color: "white"
+        }}
+      >
+
+        <h2 style={{
+          fontSize: "48px",
+          marginBottom: "30px"
+        }}>
+          Contact Us
+        </h2>
+
+        <p>📍 Bengaluru, Karnataka</p>
+        <p>📞 +91 9900292915</p>
+        <p>✉️ kumarenterprises48@gmail.com</p>
+
+        <div style={{
+          marginTop: "30px",
+          display: "flex",
+          gap: "20px"
+        }}>
+
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "white" }}
+          >
+            Instagram
+          </a>
+
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "white" }}
+          >
+            Facebook
+          </a>
+
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "white" }}
+          >
+            YouTube
+          </a>
+
+        </div>
+      </section>
+
+    </div>
+  );
 }
+
+export default App;
