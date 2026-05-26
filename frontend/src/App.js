@@ -39,3 +39,4 @@ backend/
 ├── server.js
 ├── .env
 └── package.json
+Hello Kumar Enterprises, I need product details.
