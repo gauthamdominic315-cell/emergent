@@ -1,91 +1,430 @@
-{
-  "name": "frontend",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@hookform/resolvers": "^5.0.1",
-    "@radix-ui/react-accordion": "^1.2.8",
-    "@radix-ui/react-alert-dialog": "^1.1.11",
-    "@radix-ui/react-aspect-ratio": "^1.1.4",
-    "@radix-ui/react-avatar": "^1.1.7",
-    "@radix-ui/react-checkbox": "^1.2.3",
-    "@radix-ui/react-collapsible": "^1.1.8",
-    "@radix-ui/react-context-menu": "^2.2.12",
-    "@radix-ui/react-dialog": "^1.1.11",
-    "@radix-ui/react-dropdown-menu": "^2.1.12",
-    "@radix-ui/react-hover-card": "^1.1.11",
-    "@radix-ui/react-label": "^2.1.4",
-    "@radix-ui/react-menubar": "^1.1.12",
-    "@radix-ui/react-navigation-menu": "^1.2.10",
-    "@radix-ui/react-popover": "^1.1.11",
-    "@radix-ui/react-progress": "^1.1.4",
-    "@radix-ui/react-radio-group": "^1.3.4",
-    "@radix-ui/react-scroll-area": "^1.2.6",
-    "@radix-ui/react-select": "^2.2.2",
-    "@radix-ui/react-separator": "^1.1.4",
-    "@radix-ui/react-slider": "^1.3.2",
-    "@radix-ui/react-slot": "^1.2.0",
-    "@radix-ui/react-switch": "^1.2.2",
-    "@radix-ui/react-tabs": "^1.1.9",
-    "@radix-ui/react-toast": "^1.2.11",
-    "@radix-ui/react-toggle": "^1.1.6",
-    "@radix-ui/react-toggle-group": "^1.1.7",
-    "@radix-ui/react-tooltip": "^1.2.4",
-    "axios": "^1.8.4",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "cmdk": "^1.1.1",
-    "cra-template": "1.2.0",
-    "date-fns": "3.6.0",
-    "embla-carousel-react": "^8.6.0",
-    "input-otp": "^1.4.2",
-    "lucide-react": "^0.507.0",
-    "next-themes": "^0.4.6",
-    "react": "^18.3.1",
-    "react-day-picker": "8.10.1",
-    "react": "^19.0.0", ""react-dom": "^19.0.0",
-    "react-hook-form": "^7.56.2",
-    "react-resizable-panels": "^3.0.1",
-    "react-router-dom": "^6.28.0",
-    "react-scripts": "5.0.1",
-    "recharts": "^3.6.0",
-    "sonner": "^2.0.3",
-    "tailwind-merge": "^3.2.0",
-    "tailwindcss-animate": "^1.0.7",
-    "vaul": "^1.1.2",
-    "zod": "^3.24.4"
+import React from "react";
+
+const categories = [
+  {
+    title: "Office Stationery",
+    image:
+      "https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=1200",
   },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test"
+  {
+    title: "Packaging Materials",
+    image:
+      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200",
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  {
+    title: "Plastic Products",
+    image:
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200",
   },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@craco/craco": "^7.1.0",
-    "@emergentbase/visual-edits": "https://assets.emergent.sh/npm/emergentbase-visual-edits-1.0.8.tgz",
-    "@eslint/js": "^8.57.0"
-    "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.0"
-    "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-react": "7.37.4",
-    "eslint-plugin-react-hooks": "5.2.0",
-    "globals": "15.15.0",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17"
+  {
+    title: "Disposable Products",
+    image:
+      "https://images.unsplash.com/photo-1494415859740-21e878dd929d?q=80&w=1200",
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  {
+    title: "Glass Products",
+    image:
+      "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1200",
+  },
+  {
+    title: "Electronic & Hardware",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200",
+  },
+];
+
+function App() {
+  return (
+    <div
+      style={{
+        fontFamily: "Arial, sans-serif",
+        background: "#f8fafc",
+        color: "#111827",
+      }}
+    >
+      {/* NAVBAR */}
+      <header
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 1000,
+          background: "white",
+          borderBottom: "1px solid #e5e7eb",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            padding: "20px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <h1
+              style={{
+                margin: 0,
+                color: "#0b2c6d",
+                fontSize: "28px",
+                fontWeight: "bold",
+              }}
+            >
+              Kumar Enterprises
+            </h1>
+
+            <p
+              style={{
+                margin: 0,
+                fontSize: "12px",
+                letterSpacing: "2px",
+                color: "#6b7280",
+              }}
+            >
+              ONE STOP SOLUTION FOR YOUR OFFICE NEEDS
+            </p>
+          </div>
+
+          <nav
+            style={{
+              display: "flex",
+              gap: "25px",
+              fontWeight: 600,
+            }}
+          >
+            <a href="#home" style={linkStyle}>
+              Home
+            </a>
+
+            <a href="#products" style={linkStyle}>
+              Products
+            </a>
+
+            <a href="#about" style={linkStyle}>
+              About
+            </a>
+
+            <a href="#contact" style={linkStyle}>
+              Contact
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      {/* HERO SECTION */}
+      <section
+        id="home"
+        style={{
+          minHeight: "90vh",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          alignItems: "center",
+          gap: "50px",
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "80px 20px",
+        }}
+      >
+        <div>
+          <p
+            style={{
+              color: "#d4a017",
+              letterSpacing: "4px",
+              fontWeight: 600,
+            }}
+          >
+            CORPORATE SUPPLIER • BENGALURU • SINCE 2016
+          </p>
+
+          <h2
+            style={{
+              fontSize: "64px",
+              lineHeight: 1.1,
+              margin: "20px 0",
+              color: "#0b2c6d",
+            }}
+          >
+            One Stop Solution
+            <br />
+            <span style={{ color: "#d4a017" }}>
+              for your office needs.
+            </span>
+          </h2>
+
+          <p
+            style={{
+              fontSize: "20px",
+              lineHeight: 1.8,
+              color: "#4b5563",
+            }}
+          >
+            Office stationery, packaging materials,
+            disposable products, industrial consumables,
+            pantry essentials and hardware supplies.
+          </p>
+
+          <div
+            style={{
+              display: "flex",
+              gap: "20px",
+              marginTop: "40px",
+            }}
+          >
+            <a
+              href="https://wa.me/919900292915"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                background: "#d4a017",
+                color: "white",
+                padding: "15px 28px",
+                borderRadius: "10px",
+                textDecoration: "none",
+                fontWeight: "bold",
+              }}
+            >
+              WhatsApp Us
+            </a>
+
+            <a
+              href="#products"
+              style={{
+                border: "2px solid #0b2c6d",
+                color: "#0b2c6d",
+                padding: "15px 28px",
+                borderRadius: "10px",
+                textDecoration: "none",
+                fontWeight: "bold",
+              }}
+            >
+              Explore Products
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200"
+            alt="warehouse"
+            style={{
+              width: "100%",
+              borderRadius: "20px",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+            }}
+          />
+        </div>
+      </section>
+
+      {/* PRODUCT SECTION */}
+      <section
+        id="products"
+        style={{
+          background: "white",
+          padding: "100px 20px",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
+          <h2
+            style={{
+              textAlign: "center",
+              fontSize: "48px",
+              color: "#0b2c6d",
+              marginBottom: "60px",
+            }}
+          >
+            Product Categories
+          </h2>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(300px, 1fr))",
+              gap: "30px",
+            }}
+          >
+            {categories.map((item, index) => (
+              <div
+                key={index}
+                style={{
+                  background: "#fff",
+                  borderRadius: "18px",
+                  overflow: "hidden",
+                  boxShadow: "0 5px 20px rgba(0,0,0,0.1)",
+                  transition: "0.3s",
+                }}
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  style={{
+                    width: "100%",
+                    height: "240px",
+                    objectFit: "cover",
+                  }}
+                />
+
+                <div style={{ padding: "25px" }}>
+                  <h3
+                    style={{
+                      margin: 0,
+                      fontSize: "24px",
+                      color: "#0b2c6d",
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section
+        id="about"
+        style={{
+          background: "#0b2c6d",
+          color: "white",
+          padding: "100px 20px",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1000px",
+            margin: "0 auto",
+            textAlign: "center",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: "48px",
+              marginBottom: "30px",
+            }}
+          >
+            About Kumar Enterprises
+          </h2>
+
+          <p
+            style={{
+              fontSize: "20px",
+              lineHeight: 1.8,
+              color: "#e5e7eb",
+            }}
+          >
+            Kumar Enterprises is a trusted supplier of office
+            stationery, packaging materials, disposables,
+            industrial products and corporate consumables
+            serving businesses across Bengaluru.
+          </p>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section
+        id="contact"
+        style={{
+          padding: "100px 20px",
+          background: "#f9fafb",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1000px",
+            margin: "0 auto",
+            textAlign: "center",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: "48px",
+              color: "#0b2c6d",
+              marginBottom: "30px",
+            }}
+          >
+            Contact Us
+          </h2>
+
+          <p style={contactStyle}>
+            📞 +91 9900292915
+          </p>
+
+          <p style={contactStyle}>
+            📧 kumarenterprises48@gmail.com
+          </p>
+
+          <p style={contactStyle}>
+            📍 Bengaluru, Karnataka
+          </p>
+
+          <div
+            style={{
+              marginTop: "40px",
+              display: "flex",
+              justifyContent: "center",
+              gap: "30px",
+              flexWrap: "wrap",
+            }}
+          >
+            <a href="https://instagram.com" style={socialStyle}>
+              Instagram
+            </a>
+
+            <a href="https://facebook.com" style={socialStyle}>
+              Facebook
+            </a>
+
+            <a href="https://youtube.com" style={socialStyle}>
+              YouTube
+            </a>
+
+            <a
+              href="https://wa.me/919900292915"
+              style={socialStyle}
+            >
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer
+        style={{
+          background: "#111827",
+          color: "white",
+          padding: "30px",
+          textAlign: "center",
+        }}
+      >
+        © 2026 Kumar Enterprises. All Rights Reserved.
+      </footer>
+    </div>
+  );
 }
+
+const linkStyle = {
+  textDecoration: "none",
+  color: "#111827",
+};
+
+const contactStyle = {
+  fontSize: "20px",
+  margin: "15px 0",
+};
+
+const socialStyle = {
+  textDecoration: "none",
+  color: "#0b2c6d",
+  fontWeight: "bold",
+  fontSize: "18px",
+};
+
+export default App;
